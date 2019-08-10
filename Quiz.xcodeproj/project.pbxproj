@@ -21,6 +21,7 @@
 		78BB7D5022FE877600C588EB /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB7D4F22FE877600C588EB /* ButtonModifier.swift */; };
 		78C9BE5D22FE860B007618A8 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C9BE5C22FE860B007618A8 /* Question.swift */; };
 		78F266CF22FE920600C94622 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F266CE22FE920600C94622 /* Result.swift */; };
+		78F266D122FE99F400C94622 /* ResultTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F266D022FE99F400C94622 /* ResultTextModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		78BB7D4F22FE877600C588EB /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
 		78C9BE5C22FE860B007618A8 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = SOURCE_ROOT; };
 		78F266CE22FE920600C94622 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		78F266D022FE99F400C94622 /* ResultTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTextModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				780EC3B922FC9DF200B06DD2 /* SceneDelegate.swift */,
 				780EC3BB22FC9DF200B06DD2 /* ContentView.swift */,
 				78F266CE22FE920600C94622 /* Result.swift */,
+				78F266D022FE99F400C94622 /* ResultTextModifier.swift */,
 				78BB7D4F22FE877600C588EB /* ButtonModifier.swift */,
 				78C9BE5C22FE860B007618A8 /* Question.swift */,
 				780EC3CD22FC9E3E00B06DD2 /* QuizManager.swift */,
@@ -183,6 +186,7 @@
 			files = (
 				780EC3B822FC9DF200B06DD2 /* AppDelegate.swift in Sources */,
 				78BB7D5022FE877600C588EB /* ButtonModifier.swift in Sources */,
+				78F266D122FE99F400C94622 /* ResultTextModifier.swift in Sources */,
 				780EC3CE22FC9E3E00B06DD2 /* QuizManager.swift in Sources */,
 				780EC3BA22FC9DF200B06DD2 /* SceneDelegate.swift in Sources */,
 				78C9BE5D22FE860B007618A8 /* Question.swift in Sources */,

@@ -21,30 +21,37 @@ struct ContentView: View {
     @State private var correctAnswers = 0
     
     var body: some View {
-        VStack {
-            Text(quizManager.currentQuestion.question)
-                .lineLimit(nil)
-                .multilineTextAlignment(.center)
+        ZStack {
+            Color(red: 8.0 / 255.0, green: 43.0 / 255.0, blue: 62.0 / 255.0)
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
-                ForEach(quizManager.currentQuestion.possibleAnswers) { answer in
-                    Button(answer.text) {
-                        self.guessedCorrectly = self.quizManager.checkAnswer(answer, to: self.quizManager.currentQuestion)
-                        self.loadNextRoundWithDelay(seconds: 2)
+                Text(quizManager.currentQuestion.question)
+                    .lineLimit(nil)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.white)
+                    .font(.title)
+                
+                VStack {
+                    ForEach(quizManager.currentQuestion.possibleAnswers) { answer in
+                        Button(answer.text) {
+                            self.guessedCorrectly = self.quizManager.checkAnswer(answer, to: self.quizManager.currentQuestion)
+                            self.loadNextRoundWithDelay(seconds: 2)
+                        }
+                        .modifier(AnswerButtonModifier())
                     }
-                    .modifier(AnswerButtonModifier())
-                }
-            }.padding()
+                }.padding()
+                
+                Text(result)
+                
+                if questionsAsked == 4 {
+                    Button("Show Result") {
                         
-            Text(result)
-            
-            if questionsAsked == 4 {
-                Button("Show Result") {
-
-                    //                    self.resetViews()
-                    //                    self.quizManager.getRandomQuestion()
+                        //                    self.resetViews()
+                        //                    self.quizManager.getRandomQuestion()
+                    }
+                    .modifier(PlayAgainButtonModifier())
                 }
-                .modifier(PlayAgainButtonModifier())
             }
         }
     }

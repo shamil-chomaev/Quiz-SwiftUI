@@ -12,17 +12,25 @@ struct Result: View {
     var score: Int
     
     var body: some View {
-        VStack {
-            Text("Way to go, you have")
-                .font(.title)
-                .padding()
-            Text("\(score)/4")
-                .font(.largeTitle)
-                .padding()
-            Text("correct")
-                .font(.title)
-                .padding()
-        }.padding()
+        ZStack {
+            
+            Color(red: 8.0 / 255.0, green: 43.0 / 255.0, blue: 62.0 / 255.0)
+            .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                Text("Way to go, you have")
+                    .modifier(ResultTextModifier())
+                Text("\(score)/4")
+                    .modifier(ResultTextModifier())
+                Text("correct")
+                    .modifier(ResultTextModifier())
+                
+                Button("Dismiss") {
+                    
+                }
+                .modifier(PlayAgainButtonModifier())
+            }.padding()
+        }
     }
 }
 
