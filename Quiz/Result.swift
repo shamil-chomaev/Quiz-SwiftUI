@@ -25,6 +25,7 @@ struct Result: View {
                 Text("correct")
                     .modifier(ResultTextModifier())
                 
+                //As the title suggests this button should dismiss the view, no idea what to do here though.
                 Button("Dismiss") {
                     
                 }

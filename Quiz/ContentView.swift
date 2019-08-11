@@ -16,6 +16,7 @@ struct ContentView: View {
             updateResult()
         }
     }
+    
     @State private var result = ""
     @State private var questionsAsked = 0
     @State private var correctAnswers = 0
@@ -36,22 +37,27 @@ struct ContentView: View {
                     ForEach(quizManager.currentQuestion.possibleAnswers) { answer in
                         Button(answer.text) {
                             self.guessedCorrectly = self.quizManager.checkAnswer(answer, to: self.quizManager.currentQuestion)
-                            self.loadNextRoundWithDelay(seconds: 2)
+                            if self.questionsAsked == 4 {
+                                
+                                /*
+                                 This button should be hidden when the amount of questions asked isn't equal to 4. Right now it doesn't show up at all.
+                                 
+                                 
+                                 Also, it should present the Results view, but I have no idea how to present a view, and all tutorials online are outdated.
+                                 */
+                                Button("Show Result") {
+                                    
+                                }.modifier(PlayAgainButtonModifier())
+                            } else {
+                                self.loadNextRoundWithDelay(seconds: 2)
+                            }
                         }
                         .modifier(AnswerButtonModifier())
                     }
                 }.padding()
                 
                 Text(result)
-                
-                if questionsAsked == 4 {
-                    Button("Show Result") {
-                        
-                        //                    self.resetViews()
-                        //                    self.quizManager.getRandomQuestion()
-                    }
-                    .modifier(PlayAgainButtonModifier())
-                }
+                    .foregroundColor(.white)
             }
         }
     }
