@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  QuizView.swift
 //  Quiz
 //
 //  Created by Dennis Parussini on 08.08.19.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct QuizView: View {
     @ObservedObject private var quizManager = QuizManager()
     
     @State private var guessedCorrectly = false {
@@ -20,6 +20,7 @@ struct ContentView: View {
     @State private var result = ""
     @State private var questionsAsked = 0
     @State private var correctAnswers = 0
+    @State private var showResult = false
     
     var body: some View {
         ZStack {
@@ -32,29 +33,22 @@ struct ContentView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white)
                     .font(.title)
+                    .padding()
                 
                 VStack {
                     ForEach(quizManager.currentQuestion.possibleAnswers) { answer in
                         Button(answer.text) {
                             self.guessedCorrectly = self.quizManager.checkAnswer(answer, to: self.quizManager.currentQuestion)
-                            if self.questionsAsked == 4 {
-                                
-                                /*
-                                 This button should be hidden when the amount of questions asked isn't equal to 4. Right now it doesn't show up at all.
-                                 
-                                 
-                                 Also, it should present the Results view, but I have no idea how to present a view, and all tutorials online are outdated.
-                                 */
-                                Button("Show Result") {
-                                    
-                                }.modifier(PlayAgainButtonModifier())
-                            } else {
-                                self.loadNextRoundWithDelay(seconds: 2)
-                            }
                         }
                         .modifier(AnswerButtonModifier())
+                            
+                            //Is this the correct way to present a new view? Are there other ways?
+                        .popover(isPresented: self.$showResult) {
+                            Result(score: self.correctAnswers)
+                        }
                     }
-                }.padding()
+                }
+                .padding()
                 
                 Text(result)
                     .foregroundColor(.white)
@@ -62,10 +56,23 @@ struct ContentView: View {
         }
     }
     
+    //Where/how do I call this? I've tried adding a .onAppear modifier to the ZStack, but it wouldn't work that way.
+    private func resetGame() {
+        questionsAsked = 0
+        correctAnswers = 0
+        self.resetViews()
+        self.quizManager.getRandomQuestion()
+    }
+    
     private func updateResult() {
         questionsAsked += 1
-        if guessedCorrectly { correctAnswers += 1 }
-        result = guessedCorrectly ? "Correct" : "Incorrect"
+        if questionsAsked < 4 {
+            if guessedCorrectly { correctAnswers += 1 }
+            result = guessedCorrectly ? "Correct" : "Incorrect"
+            loadNextRoundWithDelay(seconds: 2)
+        } else {
+            self.showResult.toggle()
+        }
     }
     
     private func resetViews() {
@@ -89,7 +96,7 @@ struct ContentView: View {
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        QuizView()
     }
 }
 #endif

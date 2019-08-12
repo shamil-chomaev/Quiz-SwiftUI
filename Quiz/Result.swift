@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct Result: View {
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    
     var score: Int
     
     var body: some View {
@@ -25,12 +27,13 @@ struct Result: View {
                 Text("correct")
                     .modifier(ResultTextModifier())
                 
-                //As the title suggests this button should dismiss the view, no idea what to do here though.
                 Button("Dismiss") {
-                    
+                    //Found the solution for dismissing the view online, but it feels kinda hacky. Isn't there a better/more elegant way?
+                    self.presentationMode.value.dismiss()
                 }
                 .modifier(PlayAgainButtonModifier())
-            }.padding()
+            }
+            .padding()
         }
     }
 }

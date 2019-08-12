@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		780EC3B822FC9DF200B06DD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780EC3B722FC9DF200B06DD2 /* AppDelegate.swift */; };
 		780EC3BA22FC9DF200B06DD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780EC3B922FC9DF200B06DD2 /* SceneDelegate.swift */; };
-		780EC3BC22FC9DF200B06DD2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780EC3BB22FC9DF200B06DD2 /* ContentView.swift */; };
+		780EC3BC22FC9DF200B06DD2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780EC3BB22FC9DF200B06DD2 /* QuizView.swift */; };
 		780EC3BE22FC9DF300B06DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 780EC3BD22FC9DF300B06DD2 /* Assets.xcassets */; };
 		780EC3C122FC9DF300B06DD2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 780EC3C022FC9DF300B06DD2 /* Preview Assets.xcassets */; };
 		780EC3C422FC9DF300B06DD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 780EC3C222FC9DF300B06DD2 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,8 @@
 		780EC3D522FC9E7300B06DD2 /* WrongSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 780EC3D222FC9E7300B06DD2 /* WrongSound.wav */; };
 		780EC3D622FC9E7300B06DD2 /* GameSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 780EC3D322FC9E7300B06DD2 /* GameSound.wav */; };
 		7828AB8423008A27002AC79F /* Questions in Resources */ = {isa = PBXBuildFile; fileRef = 7828AB8323008A27002AC79F /* Questions */; };
-		78BB7D5022FE877600C588EB /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB7D4F22FE877600C588EB /* ButtonModifier.swift */; };
+		785ECD592301266E0070C207 /* PlayAgainButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785ECD582301266E0070C207 /* PlayAgainButtonModifier.swift */; };
+		78BB7D5022FE877600C588EB /* AnswerButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB7D4F22FE877600C588EB /* AnswerButtonModifier.swift */; };
 		78C9BE5D22FE860B007618A8 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C9BE5C22FE860B007618A8 /* Question.swift */; };
 		78F266CF22FE920600C94622 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F266CE22FE920600C94622 /* Result.swift */; };
 		78F266D122FE99F400C94622 /* ResultTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F266D022FE99F400C94622 /* ResultTextModifier.swift */; };
@@ -29,7 +30,7 @@
 		780EC3B422FC9DF200B06DD2 /* Quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		780EC3B722FC9DF200B06DD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		780EC3B922FC9DF200B06DD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		780EC3BB22FC9DF200B06DD2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		780EC3BB22FC9DF200B06DD2 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		780EC3BD22FC9DF300B06DD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		780EC3C022FC9DF300B06DD2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		780EC3C322FC9DF300B06DD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,7 +41,8 @@
 		780EC3D222FC9E7300B06DD2 /* WrongSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WrongSound.wav; sourceTree = "<group>"; };
 		780EC3D322FC9E7300B06DD2 /* GameSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSound.wav; sourceTree = "<group>"; };
 		7828AB8323008A27002AC79F /* Questions */ = {isa = PBXFileReference; lastKnownFileType = text; path = Questions; sourceTree = "<group>"; };
-		78BB7D4F22FE877600C588EB /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
+		785ECD582301266E0070C207 /* PlayAgainButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAgainButtonModifier.swift; sourceTree = "<group>"; };
+		78BB7D4F22FE877600C588EB /* AnswerButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButtonModifier.swift; sourceTree = "<group>"; };
 		78C9BE5C22FE860B007618A8 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = SOURCE_ROOT; };
 		78F266CE22FE920600C94622 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		78F266D022FE99F400C94622 /* ResultTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTextModifier.swift; sourceTree = "<group>"; };
@@ -79,10 +81,11 @@
 			children = (
 				780EC3B722FC9DF200B06DD2 /* AppDelegate.swift */,
 				780EC3B922FC9DF200B06DD2 /* SceneDelegate.swift */,
-				780EC3BB22FC9DF200B06DD2 /* ContentView.swift */,
+				780EC3BB22FC9DF200B06DD2 /* QuizView.swift */,
 				78F266CE22FE920600C94622 /* Result.swift */,
+				78BB7D4F22FE877600C588EB /* AnswerButtonModifier.swift */,
+				785ECD582301266E0070C207 /* PlayAgainButtonModifier.swift */,
 				78F266D022FE99F400C94622 /* ResultTextModifier.swift */,
-				78BB7D4F22FE877600C588EB /* ButtonModifier.swift */,
 				78C9BE5C22FE860B007618A8 /* Question.swift */,
 				780EC3CD22FC9E3E00B06DD2 /* QuizManager.swift */,
 				780EC3CF22FC9E5000B06DD2 /* SoundManager.swift */,
@@ -189,12 +192,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				780EC3B822FC9DF200B06DD2 /* AppDelegate.swift in Sources */,
-				78BB7D5022FE877600C588EB /* ButtonModifier.swift in Sources */,
+				78BB7D5022FE877600C588EB /* AnswerButtonModifier.swift in Sources */,
 				78F266D122FE99F400C94622 /* ResultTextModifier.swift in Sources */,
+				785ECD592301266E0070C207 /* PlayAgainButtonModifier.swift in Sources */,
 				780EC3CE22FC9E3E00B06DD2 /* QuizManager.swift in Sources */,
 				780EC3BA22FC9DF200B06DD2 /* SceneDelegate.swift in Sources */,
 				78C9BE5D22FE860B007618A8 /* Question.swift in Sources */,
-				780EC3BC22FC9DF200B06DD2 /* ContentView.swift in Sources */,
+				780EC3BC22FC9DF200B06DD2 /* QuizView.swift in Sources */,
 				78F266CF22FE920600C94622 /* Result.swift in Sources */,
 				780EC3D022FC9E5000B06DD2 /* SoundManager.swift in Sources */,
 			);

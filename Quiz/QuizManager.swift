@@ -54,11 +54,6 @@ class QuizManager: ObservableObject {
         }
     }
     
-    //Helper method to create a random integer
-    func createRandomInt() -> Int {
-        return GKRandomSource.sharedRandom().nextInt(upperBound: questions.count)
-    }
-    
     //Function to check user's guess
     func checkAnswer(_ answer: Answer, to question: Question) -> Bool {
         return answer.text == question.answer.text

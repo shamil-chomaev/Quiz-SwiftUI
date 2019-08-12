@@ -19,13 +19,3 @@ struct AnswerButtonModifier: ViewModifier {
             .cornerRadius(8.0)
     }
 }
-
-struct PlayAgainButtonModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .padding()
-            .background(Color(red: 0, green: 147.0 / 255.0, blue: 135.0 / 255.0))
-            .foregroundColor(.white)
-            .cornerRadius(8.0)
-    }
-}
