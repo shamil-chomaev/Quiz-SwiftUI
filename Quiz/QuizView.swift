@@ -11,12 +11,7 @@ import SwiftUI
 struct QuizView: View {
     @ObservedObject private var quizManager = QuizManager()
     
-    @State private var guessedCorrectly = false {
-        didSet {
-            updateResult()
-        }
-    }
-    
+    @State private var guessedCorrectly = false
     @State private var result = ""
     @State private var questionsAsked = 0
     @State private var correctAnswers = 0
@@ -29,34 +24,37 @@ struct QuizView: View {
             
             VStack {
                 Text(quizManager.currentQuestion.question)
-                    .lineLimit(nil)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white)
                     .font(.title)
                     .padding()
                 
+                Spacer()
+                
                 VStack {
                     ForEach(quizManager.currentQuestion.possibleAnswers) { answer in
-                        Button(answer.text) {
-                            self.guessedCorrectly = self.quizManager.checkAnswer(answer, to: self.quizManager.currentQuestion)
+                        AnswerButton(guessedCorrectly: self.$guessedCorrectly, quizManager: self.quizManager, answer: answer) {
+                            self.updateResult()
                         }
-                        .modifier(AnswerButtonModifier())
-                            
-                            //Is this the correct way to present a new view? Are there other ways?
                         .popover(isPresented: self.$showResult) {
-                            Result(score: self.correctAnswers)
+                            Result(isPresented: self.$showResult, score: self.correctAnswers)
+                                .onDisappear {
+                                    self.resetGame()
+                            }
                         }
                     }
+                    .padding()
                 }
-                .padding()
                 
                 Text(result)
                     .foregroundColor(.white)
+                
+                Spacer()
             }
+            .padding()
         }
     }
     
-    //Where/how do I call this? I've tried adding a .onAppear modifier to the ZStack, but it wouldn't work that way.
     private func resetGame() {
         questionsAsked = 0
         correctAnswers = 0
@@ -65,13 +63,19 @@ struct QuizView: View {
     }
     
     private func updateResult() {
-        questionsAsked += 1
-        if questionsAsked < 4 {
-            if guessedCorrectly { correctAnswers += 1 }
-            result = guessedCorrectly ? "Correct" : "Incorrect"
-            loadNextRoundWithDelay(seconds: 2)
+        if guessedCorrectly {
+            correctAnswers += 1
+            Sound.playRightAnswerSound()
         } else {
+            
+            Sound.playWrongAnswerSound()
+        }
+        result = guessedCorrectly ? "Correct" : "Incorrect"
+        questionsAsked += 1
+        if questionsAsked == 4 {
             self.showResult.toggle()
+        } else {
+            loadNextRoundWithDelay(seconds: 1.5)
         }
     }
     
@@ -79,24 +83,17 @@ struct QuizView: View {
         result = ""
     }
     
-    private func loadNextRoundWithDelay(seconds: Int) {
-        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
-        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
-        // Calculates a time value to execute the method given current time and delay
-        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
-        
+    private func loadNextRoundWithDelay(seconds: Double) {
         // Executes the nextRound method at the dispatch time on the main queue
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
             self.resetViews()
             self.quizManager.getRandomQuestion()
         }
     }
 }
 
-#if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         QuizView()
     }
 }
-#endif

@@ -9,39 +9,32 @@
 import SwiftUI
 
 struct Result: View {
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @Binding var isPresented: Bool
     
     var score: Int
     
     var body: some View {
         ZStack {
-            
             Color(red: 8.0 / 255.0, green: 43.0 / 255.0, blue: 62.0 / 255.0)
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
-                Text("Way to go, you have")
-                    .modifier(ResultTextModifier())
-                Text("\(score)/4")
-                    .modifier(ResultTextModifier())
-                Text("correct")
-                    .modifier(ResultTextModifier())
-                
-                Button("Dismiss") {
-                    //Found the solution for dismissing the view online, but it feels kinda hacky. Isn't there a better/more elegant way?
-                    self.presentationMode.value.dismiss()
+                VStack {
+                    Text("Way to go, you have")
+                    Text("\(score)/4")
+                    Text("correct")
                 }
-                .modifier(PlayAgainButtonModifier())
+                .modifier(ResultTextModifier())
+                
+                PlayAgainButton(isResultPresented: $isPresented)
             }
             .padding()
         }
     }
 }
 
-#if DEBUG
 struct Result_Previews: PreviewProvider {
     static var previews: some View {
-        Result(score: 0)
+        Result(isPresented: .constant(true), score: 0)
     }
 }
-#endif

@@ -17,3 +17,14 @@ struct PlayAgainButtonModifier: ViewModifier {
             .cornerRadius(8.0)
     }
 }
+
+struct PlayAgainButton: View {
+    @Binding var isResultPresented: Bool
+    
+    var body: some View {
+        Button("Start a new round") {
+            self.isResultPresented = false
+        }
+        .modifier(PlayAgainButtonModifier())
+    }
+}
