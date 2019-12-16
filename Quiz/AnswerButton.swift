@@ -13,28 +13,28 @@ struct AnswerButtonModifier: ViewModifier {
         content
             .frame(width: 350, height: 60, alignment: .center)
             .background(Color(red: 12.0 / 255.0, green: 121.0 / 255.0, blue: 150.0 / 255.0))
-            .foregroundColor(.white)
             .cornerRadius(10)
     }
 }
 
 struct AnswerButton: View {
-    @Binding var guessedCorrectly: Bool
-    var quizManager: QuizManager
-    var answer: Answer
+    @Binding var textColor: Color
+    var answer: String
     var onTap: () -> Void
     
     var body: some View {
-        Button(answer.text) {
-            self.guessedCorrectly = self.quizManager.checkAnswer(self.answer, to: self.quizManager.currentQuestion)
+        Button(action: {
             self.onTap()
+        }) {
+            Text(answer)
+                .modifier(AnswerButtonModifier())
+                .foregroundColor(textColor)
         }
-        .modifier(AnswerButtonModifier())
     }
 }
 
 struct AnswerButton_Previews: PreviewProvider {
     static var previews: some View {
-        AnswerButton(guessedCorrectly: .constant(true), quizManager: QuizManager(), answer: Answer(text: "Hello"), onTap: {})
+        AnswerButton(textColor: .constant(.white), answer: "Hello", onTap: {})
     }
 }

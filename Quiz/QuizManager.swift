@@ -9,11 +9,14 @@
 import GameKit
 import Combine
 
-class QuizManager: ObservableObject {
-    var didChange = PassthroughSubject<Void, Never>()
+final class QuizManager: ObservableObject {
+    @Published var currentQuestion = Question(question: "", answer: Answer(text: ""), possibleAnswers: [])
     
     //Properties to keep track of question index and questions already asked
     private var questionsUsed = [Question]()
+    
+    var questionsAsked = 0
+    var correctAnswers = 0
     
     //Arrays for questions and answers
     private var questions = [
@@ -25,13 +28,7 @@ class QuizManager: ObservableObject {
         Question(question: "What was Steve Jobs' middlename?", answer: Answer(text: "Paul"), possibleAnswers: [Answer(text: "Paul"), Answer(text: "Peter"), Answer(text: "Pablo")]),
         Question(question: "When was the first iPad announced?", answer: Answer(text: "2010"), possibleAnswers: [Answer(text: "2008"), Answer(text: "2009"), Answer(text: "2010"), Answer(text: "2011")])
     ]
-    
-    var currentQuestion = Question(question: "", answer: Answer(text: ""), possibleAnswers: []) {
-        didSet {
-            didChange.send()
-        }
-    }
-    
+
     init() {
         getRandomQuestion()
     }
@@ -56,6 +53,12 @@ class QuizManager: ObservableObject {
     
     //Function to check user's guess
     func checkAnswer(_ answer: Answer, to question: Question) -> Bool {
+        questionsAsked += 1
+        
+        if answer.text == question.answer.text {
+            correctAnswers += 1
+        }
+        
         return answer.text == question.answer.text
     }
 }
